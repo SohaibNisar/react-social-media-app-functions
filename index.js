@@ -55,6 +55,10 @@ app.post("/post/:postId/unlike", FBAuth, unlikePost); //checked
 app.post("/post/:postId/comment", FBAuth, commentPost); //checked
 app.delete("/post/:postId", FBAuth, deletePost); //checked
 
+app.get("/", (req, res) => {
+  res.json({ message: "Hello World ................" });
+});
+
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);
 });
