@@ -87,12 +87,12 @@ exports.signup = (req, res) => {
 };
 
 exports.login = (req, res) => {
+    console.log(req)
     let user = {
         email: req.body.email,
         password: req.body.password
     };
 
-    console.log(user)
 
     let { errors, valid } = validateLoginData(user);
 
