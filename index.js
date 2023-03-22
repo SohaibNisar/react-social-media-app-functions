@@ -26,7 +26,7 @@ const express = require("express");
 
 const app = express();
 // app.use(cors({ origin: true }));
-const port = process.env.port || 4001;
+const port = process.env.PORT || 4001;
 
 // // auth
 // app.post("/signup", signup); //checked
