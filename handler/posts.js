@@ -80,6 +80,7 @@ exports.uploadOnePost = (req, res) => {
     };
     file.resume();
   });
+
   busboy.on("finish", function () {
     let { errors, valid } = validatePostBody(formData);
     if (!valid) return res.status(400).json(errors);
@@ -147,7 +148,7 @@ exports.uploadOnePost = (req, res) => {
         });
     }
   });
-  busboy.end(req.rawBody);
+  req.pipe(busboy);
 };
 
 exports.commentPost = (req, res) => {

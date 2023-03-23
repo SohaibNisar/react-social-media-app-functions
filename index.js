@@ -22,11 +22,15 @@ const {
 } = require("./handler/users");
 const { FBAuth } = require("./util/fbAuth");
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
-const app = express();
 
 const port = process.env.PORT || 4001;
+
+const app = express();
 app.use(cors({ origin: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // auth
 app.post("/signup", signup); //checked
@@ -49,7 +53,7 @@ app.delete("/unFriend/:userHandle", FBAuth, unFriend); //checked
 // posts
 app.get("/posts", FBAuth, getAllPost); //checked
 app.get("/post/:postId/", getPost); //checked
-app.post("/posts", FBAuth, uploadOnePost); //checked
+app.post("/post", FBAuth, uploadOnePost); //checked
 app.post("/post/:postId/like", FBAuth, likePost); //checked
 app.post("/post/:postId/unlike", FBAuth, unlikePost); //checked
 app.post("/post/:postId/comment", FBAuth, commentPost); //checked
